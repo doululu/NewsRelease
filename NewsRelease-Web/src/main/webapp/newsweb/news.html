@@ -1,0 +1,33 @@
+#@layout()
+#define main()
+<div class="table_box">
+    <table class="list">
+        <tbody>
+        <tr>
+            <th style="text-align:center;" width="5%">编号</th>
+            <th style="text-align:center;" width="15%">新闻标题</th>
+            <th style="text-align:center;" width="10%">标题图片</th>
+            <th style="text-align:center;" width="45%">简介</th>
+            <th style="text-align:center;" width="5%">阅读次数</th>
+            <th style="text-align:center;" width="10%">详情</th>
+        </tr>
+
+        #for(x : NewsPage.getList())
+        <tr>
+            <td style="text-align:center;">#(x.id)</td>
+            <td style="text-align:center;">#(x.title)</td>
+            <td style="text-align:center;">
+                <img src="img/#(x.picture)" style="width: 80px;height: 50px">
+            </td>
+            <td style="text-align:center;">#(x.introduce)</td>
+            <td style="text-align:center;">1</td>
+            <td style="text-align:center;">
+                <a href="/news/detail/#(x.id)">点我阅读</a>
+            </td>
+        </tr>
+        #end
+        </tbody>
+    </table>
+    #@paginate(NewsPage.pageNumber, NewsPage.totalPage, "/news/")
+</div>
+#end

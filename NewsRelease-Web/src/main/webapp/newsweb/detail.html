@@ -1,0 +1,21 @@
+#@layout()
+#define main()
+<h1>新闻首页 ---&gt; 新闻详情
+</h1>
+<div class="form_box">
+    <fieldset class="solid">
+        <legend>详情展示</legend>
+        <li><span style="font-size: large;color: #6F9C6F">标题:&nbsp;&nbsp;</span>#(newDetail.title??)</li>
+        <li><span style="font-size: large;color: #6F9C6F">简介:&nbsp;&nbsp;</span>#(newDetail.introduce??)</li>
+        <li><span style="font-size: large;color: #6F9C6F">标题图片:&nbsp;&nbsp;</span>
+            <img src="img/#(newDetail.picture??)" style="width: 80px;height: 50px">
+        </li>
+        <li><span style="font-size: large;color: #6F9C6F">作者:&nbsp;&nbsp;</span>#(newDetail.author??)</li>
+        <li><span style="font-size: large;color: #6F9C6F">发布时间:&nbsp;&nbsp;</span>#(newDetail.createtime??)</li>
+        <li><span style="font-size: large;color: #6F9C6F">发布内容:&nbsp;&nbsp;</span>#(newDetail.content??)</li>
+    </fieldset>
+    #end
+</div>
+
+
+
