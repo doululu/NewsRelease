@@ -61,6 +61,9 @@ public class NewsWebConfig extends JFinalConfig{
         me.add("/newsWeb", NewsWebController.class);
     }
 
+    /**
+     * 配置引擎
+     */
     @Override
     public void configEngine(Engine me) {
         me.addSharedFunction("/common/_layout.html");

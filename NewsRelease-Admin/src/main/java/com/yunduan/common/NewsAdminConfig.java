@@ -59,6 +59,9 @@ public class NewsAdminConfig extends JFinalConfig {
         me.add("/newsAdmin", NewsAdminController.class);
     }
 
+    /**
+     * 配置引擎
+     */
     @Override
     public void configEngine(Engine me) {
         me.addSharedFunction("/common/_layout.html");
