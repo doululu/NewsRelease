@@ -4,18 +4,18 @@ import com.jfinal.kit.PathKit;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.generator.Generator;
 import com.jfinal.plugin.druid.DruidPlugin;
-import com.yunduan.common.NewsRelleaseConfig;
+import com.yunduan.common.NewsAdminConfig;
 
 import javax.sql.DataSource;
 
 /**
  * 在数据库表有任何变动时，运行一下 main 方法，极速响应变化进行代码重构
  */
-public class _NewsReleaseGenerator {
+public class _NewsAdminGenerator {
 	
 	public static DataSource getDataSource() {
 		PropKit.use("config.properties");
-		DruidPlugin druidPlugin = NewsRelleaseConfig.createDruidPlugin();
+		DruidPlugin druidPlugin = NewsAdminConfig.createDruidPlugin();
 		druidPlugin.start();
 		return druidPlugin.getDataSource();
 	}

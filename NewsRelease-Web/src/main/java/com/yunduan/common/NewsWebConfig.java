@@ -16,7 +16,7 @@ import com.yunduan.newsweb.NewsWebController;
  * @date 2018/9/27 0027 11:42
  * @Version 1.0
  */
-public class NewsRelleaseConfig extends JFinalConfig{
+public class NewsWebConfig extends JFinalConfig{
 
 
     /**
@@ -58,7 +58,7 @@ public class NewsRelleaseConfig extends JFinalConfig{
      */
     @Override
     public void configRoute(Routes me) {
-        me.add("/news", NewsWebController.class);
+        me.add("/newsWeb", NewsWebController.class);
     }
 
     @Override

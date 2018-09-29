@@ -42,4 +42,5 @@ public class NewsWebService {
     public News findById(int id) {
         return dao.findById(id);
     }
+
 }

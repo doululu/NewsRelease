@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NewsRelease.iml" filepath="$PROJECT_DIR$/NewsRelease.iml" />
+      <module fileurl="file://$PROJECT_DIR$/NewsRelease-Admin/NewsRelease-Admin.iml" filepath="$PROJECT_DIR$/NewsRelease-Admin/NewsRelease-Admin.iml" />
       <module fileurl="file://$PROJECT_DIR$/NewsRelease-Web/NewsRelease-Web.iml" filepath="$PROJECT_DIR$/NewsRelease-Web/NewsRelease-Web.iml" />
     </modules>
   </component>

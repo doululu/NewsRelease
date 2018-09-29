@@ -81,4 +81,13 @@ public abstract class BaseNews<M extends BaseNews<M>> extends Model<M> implement
 		return getInt("state");
 	}
 
+	public M setReadnumber(java.lang.Integer readnumber) {
+		set("readnumber", readnumber);
+		return (M)this;
+	}
+	
+	public java.lang.Integer getReadnumber() {
+		return getInt("readnumber");
+	}
+
 }

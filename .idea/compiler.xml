@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="NewsRelease-Admin" />
         <module name="NewsRelease-Web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="NewsRelease" target="1.7" />
+      <module name="NewsRelease-Admin" target="1.7" />
       <module name="NewsRelease-Web" target="1.7" />
     </bytecodeTargetLevel>
   </component>

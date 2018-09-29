@@ -39,6 +39,7 @@
     </properties>
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/NewsRelease-Admin" />
     <file type="web" url="file://$PROJECT_DIR$/NewsRelease-Web" />
   </component>
   <component name="MavenProjectsManager">

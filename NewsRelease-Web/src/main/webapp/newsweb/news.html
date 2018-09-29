@@ -20,14 +20,14 @@
                 <img src="img/#(x.picture)" style="width: 80px;height: 50px">
             </td>
             <td style="text-align:center;">#(x.introduce)</td>
-            <td style="text-align:center;">1</td>
+            <td style="text-align:center;">#(x.readnumber)</td>
             <td style="text-align:center;">
-                <a href="/news/detail/#(x.id)">点我阅读</a>
+                <a href="/newsWeb/detail/#(x.id)">点我阅读</a>
             </td>
         </tr>
         #end
         </tbody>
     </table>
-    #@paginate(NewsPage.pageNumber, NewsPage.totalPage, "/news/")
+    #@paginate(NewsPage.pageNumber, NewsPage.totalPage, "/newsWeb/")
 </div>
 #end
