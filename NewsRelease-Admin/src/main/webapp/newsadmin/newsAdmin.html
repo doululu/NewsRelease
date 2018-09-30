@@ -32,12 +32,12 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <div style="margin-left: 20px">
         <form action="/newsAdmin/search" method="post">
-            标题:<input type="text" placeholder="标题" class="title">
-            作者:<input type="text" placeholder="作者" class="author">
-            开始时间: <input id="txtBeginDate" class="starttime">
-            结束时间: <input id="txtEndDate" class="endtime">
-            展示状态:<input type="radio" name="state" value="1" checked="checked" /> 显示
-            <input type="radio" name="state" value="0" /> 隐藏&nbsp;&nbsp;&nbsp;&nbsp;
+            标题:<input type="text" placeholder="标题" class="title" name="title">
+            作者:<input type="text" placeholder="作者" class="author" name="author">
+            开始时间: <input id="txtBeginDate" class="starttime" name="starttime">
+            结束时间: <input id="txtEndDate" class="endtime" name="endtime">
+            展示状态: <input type="radio" name="state" value="1" checked="checked" /> 显示
+                     <input type="radio" name="state" value="0" /> 隐藏&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="submit" value="搜索" class="search">
         </form>
     </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -58,10 +58,11 @@
             <td style="text-align:center;">#(x.title)</td>
             <td style="text-align:center;">#(x.author)</td>
             <td style="text-align:center;">#(x.createtime)</td>
-            <td style="text-align:center;">#(x.state)</td>
             <td style="text-align:center;">
-                <a href="/newsWeb/add">新增</a>
-                <a href="/newsWeb/detail/#(x.id)">修改</a>
+                #(x.state)
+            </td>
+            <td style="text-align:center;">
+                <a href="/newsAdmin/edit/#(x.id)">修改</a>
             </td>
         </tr>
         #end

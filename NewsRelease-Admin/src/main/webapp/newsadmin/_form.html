@@ -1,0 +1,44 @@
+<style>
+    label{
+        font-size: 15px;
+        color: #6F9C6F;
+    }
+</style>
+<fieldset class="solid">
+	<legend>修改新闻</legend>
+	<input type="hidden" name="news.id" value="#(news.id??)" />
+	<div>
+		<label>标题:</label>
+		<input type="text" name="news.title" value="#(news.title??)" />#(titleMsg)
+	</div>
+	<div>
+		<label>简介:</label>
+		<input type="text" name="news.introduce" value="#(news.introduce??)" />#(introduceMsg)
+	</div>
+	<div>
+		<label>标题图片:</label>
+        <img src="/img/#(news.picture??)" style="width: 80px;height: 50px">
+		<!--<input type="text" name="news.picture" value="#(news.picture??)" />#(pictureMsg)-->
+	</div><br>
+	<div>
+		<label>作者:</label>
+		<input type="text" name="news.author" value="#(news.author??)" />#(titleMsg)
+	</div>
+	<div>
+		<label>发布时间:</label>
+		<input type="text" name="news.createtime" value="#(news.createtime??)" />#(createtimeMsg)
+	</div>
+	<div>
+		<label>发布内容:</label>
+		<textarea name="news.content" cols="80" rows="10">#(news.content??)</textarea>#(contentMsg)
+	</div><br>
+	<div>
+		<label>展示状态:</label>
+		<input type="text" name="news.state" value="#(news.state??)" />#(stateMsg)
+	</div>
+
+	<div>
+		<label>&nbsp;</label>
+		<input value="提交" type="submit" style="width: 150px;padding: 5px 10px;border: 1px salmon;margin-left: 180px">
+	</div>
+</fieldset>

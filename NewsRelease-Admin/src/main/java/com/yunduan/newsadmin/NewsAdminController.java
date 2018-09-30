@@ -1,6 +1,7 @@
 package com.yunduan.newsadmin;
 
 import com.jfinal.core.Controller;
+import com.yunduan.common.model.News;
 
 /**
  * @author 豆璐璐
@@ -20,28 +21,60 @@ public class NewsAdminController extends Controller {
 
         setAttr("NewsPage", service.paginate(getParaToInt(0, 1), 5));
         render("/newsadmin/newsAdmin.html");
-//        render("/newsadmin/index666.html");
     }
 
     /**
      * 搜索功能
      */
-    public void search(){
+    public void search() throws Exception {
 
-        String str="农";
-        setAttr("NewsPage", service.search(getParaToInt(0, 1), 5,str));
+        setAttr("NewsPage",
+                service.search(
+                            getParaToInt(0, 1), 5,
+                            getPara("title"),
+                            getPara("author"),
+                            getPara("starttime"),
+                            getPara("endtime"),
+                            getParaToInt("state")
+                        )
+                );
+
         render("/newsadmin/newsAdmin.html");
     }
 
     /**
-     * 新增功能
+     * 跳转到 添加新闻功能页面
      */
 
-    public  void add(){
+    public void add(){
 
-        renderText("666666666");
+        render("/newsadmin/add.html");
     }
+
     /**
-     * 修改功能
+     * 跳转到 修改功能页面
      */
+    public void edit(){
+
+        setAttr("news", service.findById(getParaToInt()));
+        render("/newsadmin/edit.html");
+    }
+
+    /**
+     * 修改新闻
+     */
+    public void update(){
+
+        getBean(News.class).update();
+        redirect("/newsAdmin");
+    }
+
+    /**
+     * 添加新闻
+     */
+    public void save(){
+
+        getBean(News.class).save();
+        redirect("/newsAdmin");
+    }
 }

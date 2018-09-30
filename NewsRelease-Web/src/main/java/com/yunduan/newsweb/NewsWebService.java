@@ -31,7 +31,7 @@ public class NewsWebService {
      * @return
      */
     public Page<News> paginate(int pageNumber, int pageSize) {
-        return dao.paginate(pageNumber, pageSize, "select *", "from news order by id asc");
+        return dao.paginate(pageNumber, pageSize, "select *", "from news where state='1' order by id asc");
     }
 
     /**

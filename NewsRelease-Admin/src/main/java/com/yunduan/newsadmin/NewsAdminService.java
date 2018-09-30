@@ -37,8 +37,17 @@ public class NewsAdminService {
     /**
      * 搜索功能
      */
-    public Page<News> search(int pageNumber, int pageSize,String str){
+    public Page<News> search(int pageNumber, int pageSize,String title,String author,String starttime,String endtime,Integer state){
 
-        return dao.paginate(pageNumber, pageSize, "select *", "from news where title like '%"+str+"%'");
+        String sql="from news where title like '%"+title+"%' and author like '%"+author+"%'and createtime between '"+starttime+"' and '"+endtime+"' and state ='"+state+"'";
+        return dao.paginate(pageNumber, pageSize, "select *", sql);
     }
+
+    /**
+     * 根据id 获取新闻详情
+     */
+    public News findById(int id) {
+        return dao.findById(id);
+    }
+
 }
