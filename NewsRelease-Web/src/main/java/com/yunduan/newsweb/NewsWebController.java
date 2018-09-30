@@ -3,6 +3,9 @@ package com.yunduan.newsweb;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Db;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author 豆璐璐
  * @description
@@ -32,21 +35,17 @@ public class NewsWebController extends Controller {
      * 根据新闻编号 获取新闻详情
      */
     public void detail(){
-
-        //获取数据库中 最初阅读数
-        int readnum=service.findById(getParaToInt()).getReadnumber();
-        boolean flag=false;  //判断session   false:没有阅读  true:已经阅读
-        setSessionAttr("isRead",flag);
-
-        if("ture".equals(getSessionAttr("isRead"))){ //已近阅读
-
-        }else{ //没有阅读 阅读量+1
-            readnum+=1;
-            flag=true;
-            //根据编号 更新阅读数
-            Db.update("update news set readnumber="+readnum+" where id="+getParaToInt()+"");
+//
+//        //获取数据库中 最初阅读数
+//        int readnum=service.findById(getParaToInt()).getReadnumber();
+//        boolean flag=false;  //判断session   false:没有阅读  true:已经阅读
+//        setSessionAttr("isRead",flag);
+        String id = getParaToInt().toString();
+        Object isRead =getSessionAttr(id);
+        if(null==isRead){  //没有阅读 阅读量+1
+            Db.update("update news set readnumber=readnumber+1 where id="+getParaToInt()+"");
+            setSessionAttr(id,true);
         }
-
         //根据编号 显示新闻详情
         setAttr("newDetail", service.findById(getParaToInt()));
         render("/newsweb/detail.html");

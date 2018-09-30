@@ -1,6 +1,10 @@
 package com.yunduan.newsadmin;
 
+import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.Page;
 import com.yunduan.common.model.News;
+
+import java.util.List;
 
 /**
  * @author 豆璐璐
@@ -22,4 +26,19 @@ public class NewsAdminService {
      * 			http://www.jfinal.com/doc/5-13
      */
     private News dao = new News().dao();
+
+    /**
+     * 后台新闻展示
+     */
+    public Page<News> paginate(int pageNumber, int pageSize) {
+        return dao.paginate(pageNumber, pageSize, "select *", "from news order by id asc");
+    }
+
+    /**
+     * 搜索功能
+     */
+    public Page<News> search(int pageNumber, int pageSize,String str){
+
+        return dao.paginate(pageNumber, pageSize, "select *", "from news where title like '%"+str+"%'");
+    }
 }

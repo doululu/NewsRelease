@@ -1,0 +1,90 @@
+#@layout()
+#define main()
+<style>
+    .title{
+        width: 100px;
+        padding:5px 10px;
+        border:1px solid #ccc;
+    }
+    .author{
+        width: 100px;
+        padding:5px 10px;
+        border:1px solid #ccc;
+    }
+    .starttime{
+        width: 100px;
+        padding:5px 10px;
+        border:1px solid #ccc;
+    }
+    .endtime{
+        width: 100px;
+        padding:5px 10px;
+        border:1px solid #ccc;
+    }
+    .search{
+        width: 100px;
+        padding:5px 10px;
+        border:1px solid #ccc;
+    }
+
+</style>
+<div class="table_box">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div style="margin-left: 20px">
+        <form action="/newsAdmin/search" method="post">
+            标题:<input type="text" placeholder="标题" class="title">
+            作者:<input type="text" placeholder="作者" class="author">
+            开始时间: <input id="txtBeginDate" class="starttime">
+            结束时间: <input id="txtEndDate" class="endtime">
+            展示状态:<input type="radio" name="state" value="1" checked="checked" /> 显示
+            <input type="radio" name="state" value="0" /> 隐藏&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="submit" value="搜索" class="search">
+        </form>
+    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <table class="list">
+        <tbody>
+        <tr>
+            <th style="text-align:center;" width="10%">编号</th>
+            <th style="text-align:center;" width="35%">标题</th>
+            <th style="text-align:center;" width="20%">作者</th>
+            <th style="text-align:center;" width="15%">发布时间</th>
+            <th style="text-align:center;" width="10%">展示状态</th>
+            <th style="text-align:center;" width="10%">编辑</th>
+        </tr>
+
+        #for(x : NewsPage.getList())
+        <tr>
+            <td style="text-align:center;">#(x.id)</td>
+            <td style="text-align:center;">#(x.title)</td>
+            <td style="text-align:center;">#(x.author)</td>
+            <td style="text-align:center;">#(x.createtime)</td>
+            <td style="text-align:center;">#(x.state)</td>
+            <td style="text-align:center;">
+                <a href="/newsWeb/add">新增</a>
+                <a href="/newsWeb/detail/#(x.id)">修改</a>
+            </td>
+        </tr>
+        #end
+        </tbody>
+    </table>
+    #@paginate(NewsPage.pageNumber, NewsPage.totalPage, "/newsAdmin/")
+</div>
+
+<!--jquery 时间插件-->
+<script>
+    $(function () {
+        $("#txtBeginDate").calendar({
+            controlId: "divDate", // 弹出的日期控件ID，默认: $(this).attr("id") + "Calendar"
+            speed: 200, // 三种预定速度之一的字符串("slow", "normal", or "fast")或表示动画时长的毫秒数值(如：1000),默认：200
+            complement: true, // 是否显示日期或年空白处的前后月的补充,默认：true
+            readonly: true,  // 目标对象是否设为只读，默认：true
+            upperLimit: new Date(), // 日期上限，默认：NaN(不限制)
+            lowerLimit: new Date("2011/01/01"), // 日期下限，默认：NaN(不限制)
+//            callback: function () {  // 点击选择日期后的回调函数
+//                alert("您选择的日期是：" + $("#txtBeginDate").val());
+//            }
+        });
+        $("#txtEndDate").calendar();
+    });
+</script>
+#end
