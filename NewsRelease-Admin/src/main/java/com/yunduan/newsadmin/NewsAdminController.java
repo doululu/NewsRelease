@@ -6,6 +6,8 @@ import com.yunduan.common.model.News;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -76,6 +78,11 @@ public class NewsAdminController extends Controller {
             news.setPicture(url);
         }
 
+        Date currentTime = new Date();
+//        news.setCreatetime(new Date());  //创建时间
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        news.setCreatetime(formatter.format(currentTime));
+
         //更新内容
         news.update();
 
@@ -118,6 +125,10 @@ public class NewsAdminController extends Controller {
             news.setPicture(url);
         }
 
+//        news.setCreatetime(new Date());  //创建时间
+        Date currentTime = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        news.setCreatetime(formatter.format(currentTime));
         //新增新闻
         news.save();
 //        getBean(News.class).save();
