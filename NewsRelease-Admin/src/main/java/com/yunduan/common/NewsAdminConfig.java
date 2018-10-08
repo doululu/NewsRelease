@@ -47,6 +47,7 @@ public class NewsAdminConfig extends JFinalConfig {
         PropKit.use("config.properties");
         me.setDevMode(PropKit.getBoolean("devMode", false));
 
+        me.setBaseUploadPath("upload");// 配置文件上传路径
         //设置开发模式
         //me.setDevMode(true);
     }

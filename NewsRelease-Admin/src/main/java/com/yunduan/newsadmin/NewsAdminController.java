@@ -1,7 +1,12 @@
 package com.yunduan.newsadmin;
 
 import com.jfinal.core.Controller;
+import com.jfinal.upload.UploadFile;
 import com.yunduan.common.model.News;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
 
 /**
  * @author 豆璐璐
@@ -64,9 +69,41 @@ public class NewsAdminController extends Controller {
      * 修改新闻
      */
     public void update(){
+        UploadFile file = getFile();
+        News news = getBean(News.class);
+        if (null!= file){  //图片不为空时，进行文件上传
+            String url = uploadFile();
+            news.setPicture(url);
+        }
 
-        getBean(News.class).update();
+        //更新内容
+        news.update();
+
         redirect("/newsAdmin");
+    }
+
+    /**
+     * 文件上传
+     */
+    public String uploadFile(){
+
+//        UploadFile file1 = getFile("file");
+        //文件上传
+        UploadFile uploadFile = this.getFile();//获取前台上传文件对象
+        String fileName = uploadFile.getOriginalFileName();//获取文件名
+        File file = uploadFile.getFile();//获取文件对象
+        String s = UUID.randomUUID().toString()+ file.getName().substring(file.getName().lastIndexOf("."));
+        String url = "http://localhost:8083/res/" + s;
+        File t = new File("E:\\imgupload\\" + s);//设置本地上传文件对象（并重命名）
+        try {
+            t.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        service.fileChannelCopy(file, t);//将上传的文件的数据拷贝到本地新建的文件
+        file.delete();
+        this.renderHtml("success,<a href=\"./\">back</a>");
+        return url;
     }
 
     /**
@@ -74,7 +111,16 @@ public class NewsAdminController extends Controller {
      */
     public void save(){
 
-        getBean(News.class).save();
+        UploadFile file = getFile();
+        News news = getBean(News.class);
+        if (null!= file){  //图片不为空时，进行文件上传
+            String url = uploadFile();
+            news.setPicture(url);
+        }
+
+        //新增新闻
+        news.save();
+//        getBean(News.class).save();
         redirect("/newsAdmin");
     }
 }

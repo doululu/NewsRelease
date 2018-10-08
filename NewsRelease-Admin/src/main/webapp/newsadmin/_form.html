@@ -17,8 +17,10 @@
 	</div>
 	<div>
 		<label>标题图片:</label>
-        <img src="/img/#(news.picture??)" style="width: 80px;height: 50px">
-		<!--<input type="text" name="news.picture" value="#(news.picture??)" />#(pictureMsg)-->
+        #if((news.picture??)!=null)
+			<img src="#(news.picture??)" style="width: 80px;height: 50px">#(pictureMsg)
+        #end
+			<input type="file" name="file">
 	</div><br>
 	<div>
 		<label>作者:</label>
@@ -26,17 +28,60 @@
 	</div>
 	<div>
 		<label>发布时间:</label>
-		<input type="text" name="news.createtime" value="#(news.createtime??)" />#(createtimeMsg)
+		<input type="date" name="news.createtime" value="#(news.createtime??)" />#(createtimeMsg)
 	</div>
 	<div>
 		<label>发布内容:</label>
-		<textarea name="news.content" cols="80" rows="10">#(news.content??)</textarea>#(contentMsg)
+		<!--UEditor 文本编辑器-->
+		<script id="editor" type="text/plain" name="news.content"
+                style="width:77%;height:100px;">#(news.content??)</script>#(contentMsg)
+        <script type="text/javascript">
+        //实例化编辑器
+        var ue = UE.getEditor('editor', {toolbars: [
+            [
+                'undo', //撤销
+                'bold', //加粗
+                'underline', //下划线
+                'preview', //预览
+                'horizontal', //分隔线
+                'inserttitle', //插入标题
+                'cleardoc', //清空文档
+                'fontfamily', //字体
+                'fontsize', //字号
+                'paragraph', //段落格式
+                'simpleupload', //单图上传
+                'insertimage', //多图上传
+                'attachment', //附件
+                'music', //音乐
+                'inserttable', //插入表格
+                'emotion', //表情
+                'insertvideo', //视频
+                'justifyleft', //居左对齐
+                'justifyright', //居右对齐
+                'justifycenter', //居中对
+                'justifyjustify', //两端对齐
+                'forecolor', //字体颜色
+                'fullscreen', //全屏
+                'edittip ', //编辑提示
+                'customstyle', //自定义标题
+                'template', //模板
+            ]
+        ]});
+		</script>
 	</div><br>
 	<div>
 		<label>展示状态:</label>
-		<input type="text" name="news.state" value="#(news.state??)" />#(stateMsg)
-	</div>
+		<!--<input type="text" name="news.state" value="#(news.state??)" />#(stateMsg)-->
+        <select name="news.state">
+            <option  value="0">不展示</option>#(stateMsg)
+            <option  value="1">展示</option>#(stateMsg)
+        </select>
 
+	</div>
+    <div style="display: none">
+        <label>阅读次数:</label>
+        <input type="text" name="news.readnumber" value="0" />#(readnumberMsg)
+    </div>
 	<div>
 		<label>&nbsp;</label>
 		<input value="提交" type="submit" style="width: 150px;padding: 5px 10px;border: 1px salmon;margin-left: 180px">

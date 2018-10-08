@@ -36,8 +36,8 @@
             作者:<input type="text" placeholder="作者" class="author" name="author">
             开始时间: <input id="txtBeginDate" class="starttime" name="starttime">
             结束时间: <input id="txtEndDate" class="endtime" name="endtime">
-            展示状态: <input type="radio" name="state" value="1" checked="checked" /> 显示
-                     <input type="radio" name="state" value="0" /> 隐藏&nbsp;&nbsp;&nbsp;&nbsp;
+            展示状态: <input type="radio" name="state" value="0" checked="checked" /> 不展示
+                     <input type="radio" name="state" value="1" /> 展示&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="submit" value="搜索" class="search">
         </form>
     </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -59,7 +59,11 @@
             <td style="text-align:center;">#(x.author)</td>
             <td style="text-align:center;">#(x.createtime)</td>
             <td style="text-align:center;">
-                #(x.state)
+                #if(x.state==1)
+                     展示
+                #else
+                    不展示
+                #end
             </td>
             <td style="text-align:center;">
                 <a href="/newsAdmin/edit/#(x.id)">修改</a>
